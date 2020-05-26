@@ -9,13 +9,11 @@ import { CssBaseline } from '@material-ui/core';
 function App() {
   return (
     <CssBaseline>
-
       <Switch>
         <Route path='/' exact component={Home}/>
         <Route path='/signup' component={Signup}/>
         <Route path='/login' component={Login}/>    
-      </Switch>
-      
+      </Switch>  
     </CssBaseline>
   );
 }

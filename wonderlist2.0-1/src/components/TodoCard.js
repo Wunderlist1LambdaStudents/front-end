@@ -1,9 +1,15 @@
 import React from 'react';
 
-const TodoCard = () => {
+const TodoCard = ({ todo }) => {
   return (
-    <div>
-      <h1>create a card for each todo</h1>
+    <div className='todo-card'>
+      <h3>{todo.name}</h3>
+      <p>{todo.completed}</p>
+      <p>{todo.important}</p>
+      <p>{todo.summary}</p>
+      <p>{todo.time}</p>
+      <button>Edit</button>
+      <button>Delete</button>
     </div>
   );
 };
