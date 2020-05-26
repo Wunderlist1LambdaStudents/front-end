@@ -1,9 +1,10 @@
+
 // GUID Generator (uppercase: checked) (hyphens: checked)
 // https://www.guidgenerator.com/online-guid-generator.aspx
 
 //Michael- This is all the attribute data that is being fed into the MyForm / MyInput components
 
-export const signUpFormData = (reference) =>( 
+export const signUpFormData = (historyRef, passwordRef) =>( 
 
     {
 
@@ -46,7 +47,7 @@ export const signUpFormData = (reference) =>(
                 required: "Please confirm your password.",
                 validate: value =>
                 // Michael- password reference here
-                value === reference.current || "Your passwords don't match. 😵"
+                value === passwordRef.current || "Your passwords don't match. 😵"
             },
         },
 
@@ -100,14 +101,16 @@ export const signUpFormData = (reference) =>(
                 textContent: 'Back',
                 attributes:{
 
+                    type:'button',
                     variant: 'outlined',
+                    onClick: ()=> historyRef.goBack()
                 }
             }
         }       
     } 
 )
 
-export const loginFormData = () =>( 
+export const loginFormData = (historyRef) =>( 
 
     {
         
@@ -155,14 +158,15 @@ export const loginFormData = () =>(
                 }
             },
 
-            signUp:{
+            goBack:{
 
                 id:'828ACC52-EEC2-4093-8267-877285CEB627',
-                textContent: 'Sign Up',
+                textContent: 'Back',
                 attributes:{
 
+                    type:'button',
                     variant: 'outlined',
-                    color: 'secondary'
+                    onClick: ()=> historyRef.goBack()
                 }
             }
         }       
