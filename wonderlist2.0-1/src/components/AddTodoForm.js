@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
-const AddTodoForm = () => {
+const AddTodoForm = ({ setToggleAddForm }) => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = data => {
@@ -18,7 +18,9 @@ const AddTodoForm = () => {
       </select>
       <textarea name='description' ref={register} />
       <button>Add todo</button>
-      <button type='button'>Cancel</button>
+      <button type='button' onClick={() => setToggleAddForm(false)}>
+        Cancel
+      </button>
     </form>
   );
 };

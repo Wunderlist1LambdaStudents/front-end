@@ -1,7 +1,16 @@
 import { FETCH_TODOS_START, FETCH_TODOS_SUCCESS } from '../actions/todosAction';
 
 const initialState = {
-  todos: [],
+  todos: [
+    {
+      id: 1,
+      name: 'bob',
+      completed: false,
+      important: 'important',
+      summary: 'hello',
+      time: 'now',
+    },
+  ],
   isLoading: false,
 };
 
