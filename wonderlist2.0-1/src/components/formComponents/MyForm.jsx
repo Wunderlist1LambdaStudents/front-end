@@ -18,7 +18,7 @@ import { Button, Container } from '@material-ui/core'
 export default function MyForm(props){
     // Michael- useForm state management
     const { register, handleSubmit, errors, watch } = useForm({mode:'onBlur'});
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => Object.values(data).map(key => console.dir(key))
     // Michael- making a refrence for password matching later
     const passwordRef = useRef({});
     passwordRef.current = watch("password", "");
