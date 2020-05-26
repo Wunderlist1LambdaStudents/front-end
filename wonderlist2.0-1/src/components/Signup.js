@@ -1,11 +1,11 @@
 import React from 'react';
+import MyForm from './formComponents/MyForm'
+import {signUpFormData, formStyle} from './formComponents/formComponentsData'
 
-const Signup = () => {
-  return (
-    <div>
-      <h1>this is th</h1>
-    </div>
-  );
-};
+const Signup = () => (
+  //Michael - Temporary Styling
+  <MyForm data={signUpFormData} style={formStyle}/>
+
+)
 
 export default Signup;
