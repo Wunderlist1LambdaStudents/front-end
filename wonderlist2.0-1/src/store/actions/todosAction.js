@@ -1,4 +1,4 @@
-import axiosWithAuth from '../../utils/axiosWithAuth';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
 export const FETCH_TODOS_START = 'FETCH_TODOS_START';
 export const FETCH_TODOS_SUCCESS = 'FETCH_TODOS_SUCCESS';
@@ -38,7 +38,7 @@ export const addNewTodo = todo => {
   };
 };
 
-export const editTodo = (id, todo) => {
+export const editTodos = (id, todo) => {
   return dispatch => {
     dispatch({ type: EDIT_TODO });
 
