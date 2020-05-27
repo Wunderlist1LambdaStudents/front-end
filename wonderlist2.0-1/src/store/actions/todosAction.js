@@ -74,3 +74,5 @@ export const deleteTodo = id => {
       .catch(err => console.log('did not delete the todo', err));
   };
 };
+
+//Might need an action to post to the data base that the todo is completed
