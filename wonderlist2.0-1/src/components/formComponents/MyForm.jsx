@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import MyInput from './MyInput'
 import { Button, Container } from '@material-ui/core'
+import {useHistory} from 'react-router-dom'
 
 //////////////////////////////////////
 //////////////////////////////////////
@@ -17,13 +18,15 @@ import { Button, Container } from '@material-ui/core'
 
 export default function MyForm(props){
     // Michael- useForm state management
-    const { register, handleSubmit, errors, watch } = useForm({mode:'onBlur'});
+    const { register, handleSubmit, errors, watch } = useForm({mode:'onBlur'})
     const onSubmit = data => Object.values(data).map(key => console.dir(key))
+    //useHistory into constant to pass into props.data
+    const history = useHistory()
     // Michael- making a refrence for password matching later
     const passwordRef = useRef({});
-    passwordRef.current = watch("password", "");
+    passwordRef.current = watch("password", "")
     // Michael- packaging all this data for the makeForm() function
-    const formData = props.data(passwordRef);
+    const formData = props.data(history, passwordRef)
     const formPackage = {errors, register, formData}
     
     function makeForm(obj){
