@@ -56,11 +56,25 @@ const TodosList = ({ todos }) => {
       <h1>Render the list of todos</h1>
       {todos.map(todo => {
         return (
-          <TodoCard
-            key={todo.id}
-            todo={todo}
-            setToggleEditForm={setToggleEditForm}
-          />
+          <>
+            <TodoCard
+              key={todo.id}
+              todo={todo}
+              setToggleEditForm={setToggleEditForm}
+            />
+            <Modal
+              open={toggleEditForm}
+              onClose={() => setToggleEditForm(false)}
+            >
+              <div style={modalStyle} className={classes.paper}>
+                <EditTodoForm
+                  setToggleEditForm={setToggleEditForm}
+                  todo={todo}
+                  id={todo.id}
+                />
+              </div>
+            </Modal>
+          </>
         );
       })}
       <Modal open={toggleAddForm} onClose={() => setToggleAddForm(false)}>
@@ -68,12 +82,6 @@ const TodosList = ({ todos }) => {
           <AddTodoForm setToggleAddForm={setToggleAddForm} />
         </div>
       </Modal>
-      <Modal open={toggleEditForm} onClose={() => setToggleEditForm(false)}>
-        <div style={modalStyle} className={classes.paper}>
-          <EditTodoForm setToggleEditForm={setToggleEditForm} />
-        </div>
-      </Modal>
-      {/* {toggleAddForm && <AddTodoForm setToggleAddForm={setToggleAddForm} />} */}
     </div>
   );
 };

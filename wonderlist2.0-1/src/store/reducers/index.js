@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import { combineReducers, compose } from 'redux';
 import { todosReducer as todos } from './todosReducer';
 import { userReducer as user } from './userReducer';
 
