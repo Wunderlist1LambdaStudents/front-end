@@ -18,13 +18,13 @@ export const signupSubmitHandler = data => {
 
 export const loginSubmitHandler = loginData => {
   return dispatch => {
-    dispatch({ type: LOGIN_SUBMIT });
     axiosWithAuth()
       .post('/api/auth/login', loginData)
       .then(res => {
         console.log('your user is logged in', res);
 
         localStorage.setItem('token', res.data.token);
+        dispatch({ type: LOGIN_SUBMIT, payload: res.data });
       })
       .catch(err => console.log('your user is not logged in', err));
   };

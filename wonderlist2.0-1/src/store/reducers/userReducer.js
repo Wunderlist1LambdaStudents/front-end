@@ -8,15 +8,12 @@ const initialState = {
 
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    // case LOGIN_SUBMIT:
-    //   console.log(user.id);
-    //   return {
-    //     ...state,
-    //     user: {
-    //       ...state.user,
-    //       id: action.payload.id,
-    //     },
-    //   };
+    case LOGIN_SUBMIT:
+      // console.log(user.id);
+      return {
+        ...state,
+        user: action.payload,
+      };
     default:
       return state;
   }
