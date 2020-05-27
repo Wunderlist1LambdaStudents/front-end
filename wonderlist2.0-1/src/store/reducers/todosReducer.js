@@ -4,7 +4,23 @@ const initialState = {
   todos: [
     {
       id: 1,
-      name: 'bob',
+      name: 'Home Work',
+      completed: false,
+      important: 'important',
+      summary: 'hello',
+      time: 'now',
+    },
+    {
+      id: 2,
+      name: 'Clean',
+      completed: false,
+      important: 'important',
+      summary: 'hello',
+      time: 'now',
+    },
+    {
+      id: 3,
+      name: 'Wash',
       completed: false,
       important: 'important',
       summary: 'hello',

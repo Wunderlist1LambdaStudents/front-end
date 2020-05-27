@@ -3,12 +3,12 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 export const SIGN_UP_SUBMIT = 'SIGN_UP_SUBMIT';
 export const LOGIN_SUBMIT = 'LOGIN_SUBMIT';
 
-export const signSubmitHandler = data => {
+export const signupSubmitHandler = data => {
   return dispatch => {
     dispatch({ type: SIGN_UP_SUBMIT });
 
     axiosWithAuth()
-      .post('', data)
+      .post('/api/auth/register', data)
       .then(res => {
         console.log('created a new user', res);
       })
@@ -20,7 +20,7 @@ export const loginSubmitHandler = loginData => {
   return dispatch => {
     dispatch({ type: LOGIN_SUBMIT });
     axiosWithAuth()
-      .post('', loginData)
+      .post('/api/auth/login', loginData)
       .then(res => {
         console.log('your user is logged in', res);
 

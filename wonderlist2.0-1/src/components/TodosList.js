@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch, connect } from 'react-redux';
 import TodoCard from './TodoCard';
 import EditTodoForm from './EditTodoForm';
 import AddTodoForm from './AddTodoForm';
+
+import { fetchTodos } from '../store/actions/todosAction';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -33,8 +35,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const TodosList = ({ todos }) => {
+const TodosList = ({ todos, fetchTodos }) => {
   // const todos = useSelector(state => state.todosReducer.todos);
+
+  //Micheal
+  useEffect(() => {
+    // fetchTodos();
+  }, []);
 
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
@@ -42,6 +49,11 @@ const TodosList = ({ todos }) => {
   //toggle the forms on and off
   const [toggleAddForm, setToggleAddForm] = useState(false);
   const [toggleEditForm, setToggleEditForm] = useState(false);
+  const [currentTodo, setCurrentTodo] = useState({});
+
+  const editTodo = todo => {
+    setCurrentTodo(todo);
+  };
 
   return (
     <div>
@@ -61,25 +73,23 @@ const TodosList = ({ todos }) => {
               key={todo.id}
               todo={todo}
               setToggleEditForm={setToggleEditForm}
+              toggleEditForm={toggleEditForm}
+              editTodo={editTodo}
             />
-            <Modal
-              open={toggleEditForm}
-              onClose={() => setToggleEditForm(false)}
-            >
-              <div style={modalStyle} className={classes.paper}>
-                <EditTodoForm
-                  setToggleEditForm={setToggleEditForm}
-                  todo={todo}
-                  id={todo.id}
-                />
-              </div>
-            </Modal>
           </>
         );
       })}
       <Modal open={toggleAddForm} onClose={() => setToggleAddForm(false)}>
         <div style={modalStyle} className={classes.paper}>
           <AddTodoForm setToggleAddForm={setToggleAddForm} />
+        </div>
+      </Modal>
+      <Modal open={toggleEditForm} onClose={() => setToggleEditForm(false)}>
+        <div style={modalStyle} className={classes.paper}>
+          <EditTodoForm
+            setToggleEditForm={setToggleEditForm}
+            currentTodo={currentTodo}
+          />
         </div>
       </Modal>
     </div>
@@ -93,4 +103,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps, {})(TodosList);
+export default connect(mapStateToProps, { fetchTodos })(TodosList);
