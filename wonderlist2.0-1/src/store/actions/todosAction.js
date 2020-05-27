@@ -6,6 +6,7 @@ export const ADD_TODO = 'ADD_TODO';
 export const EDIT_TODO = 'EDIT_TODO';
 export const DELETE_TODO = 'DELETE_TODO';
 
+//function to grab all the users data
 export const fetchTodos = () => {
   return dispatch => {
     dispatch({ type: FETCH_TODOS_START });
@@ -23,6 +24,7 @@ export const fetchTodos = () => {
   };
 };
 
+//add a new todo
 export const addNewTodo = todo => {
   return dispatch => {
     dispatch({ type: ADD_TODO });
@@ -39,6 +41,7 @@ export const addNewTodo = todo => {
   };
 };
 
+// edit the todo the user clicked ons
 export const editTodos = (id, todo) => {
   return dispatch => {
     dispatch({ type: EDIT_TODO });
@@ -55,7 +58,8 @@ export const editTodos = (id, todo) => {
   };
 };
 
-export const editTodo = id => {
+//
+export const deleteTodo = id => {
   return dispatch => {
     dispatch({ type: DELETE_TODO });
 

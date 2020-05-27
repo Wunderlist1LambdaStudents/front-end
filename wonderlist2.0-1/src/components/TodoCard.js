@@ -1,6 +1,7 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
-const TodoCard = ({ todo }) => {
+const TodoCard = ({ todo, setToggleEditForm }) => {
   return (
     <div className='todo-card'>
       <h3>{todo.name}</h3>
@@ -8,7 +9,13 @@ const TodoCard = ({ todo }) => {
       <p>{todo.important}</p>
       <p>{todo.summary}</p>
       <p>{todo.time}</p>
-      <button>Edit</button>
+      <button
+        onClick={() => {
+          setToggleEditForm(true);
+        }}
+      >
+        Edit
+      </button>
       <button>Delete</button>
     </div>
   );
