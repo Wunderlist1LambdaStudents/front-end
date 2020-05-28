@@ -40,6 +40,10 @@ function MyForm(props) {
     // if (Object.values(data).length > 2) {
     // } else {
     // }
+    // Object.values(data).length > 2
+    //   ? props.signupSubmitHandler(data)
+    //   : props.loginSubmitHandler(data);
+
     axiosWithAuth()
       .post('/api/auth/login', data)
       .then(res => {
@@ -51,7 +55,6 @@ function MyForm(props) {
       .catch(err => console.log('your user is not logged in', err));
   };
 
-  //useHistory into constant to pass into props.data
   // Michael- making a refrence for password matching later
   const passwordRef = useRef({});
   passwordRef.current = watch('password', '');
