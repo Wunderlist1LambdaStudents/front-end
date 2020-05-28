@@ -5,7 +5,7 @@ import {
 
 const initialState = {
   isFetchingUser: false,
-  user: {},
+  userId: null,
   userError: '',
 };
 
@@ -21,8 +21,7 @@ export const userReducer = (state = initialState, action) => {
       // console.log(user.id);
       return {
         ...state,
-        user: action.payload,
-        isFetching: false,
+        userId: action.payload,
       };
     default:
       return state;
