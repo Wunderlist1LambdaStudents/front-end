@@ -6,6 +6,8 @@ export const ADD_TODO = 'ADD_TODO';
 export const EDIT_TODO = 'EDIT_TODO';
 export const DELETE_TODO = 'DELETE_TODO';
 
+const userId = localStorage.getItem('userId');
+
 //function to grab all the users data
 export const fetchTodos = () => {
   return dispatch => {
@@ -13,7 +15,7 @@ export const fetchTodos = () => {
 
     //fetch the users todo list might need the user id or just use token
     axiosWithAuth()
-      .get('/api/users')
+      .get('')
       .then(res => {
         console.log(res);
 

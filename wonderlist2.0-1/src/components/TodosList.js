@@ -36,8 +36,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const TodosList = ({ todos, fetchTodos }) => {
+  const userId = localStorage.getItem('userId');
   // const todos = useSelector(state => state.todosReducer.todos);
-
+  console.log('user id', userId);
   //Micheal
   useEffect(() => {
     // fetchTodos();
