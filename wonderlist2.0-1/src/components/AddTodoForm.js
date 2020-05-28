@@ -27,6 +27,7 @@ const AddTodoForm = ({ setToggleAddForm, addNewTodo }) => {
         ref={register}
         defaultValue={'Today'} // { currentTodo.time }
       />
+
       <input type='text' name='title' ref={register} placeholder='Title' />
       <input type='checkbox' name='important' ref={register} value={false} />
       <input type='checkbox' name='completed' ref={register} value={false} />
