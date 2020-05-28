@@ -2,6 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { addNewTodo } from '../store/actions/todosAction';
+import ErrorIcon from '@material-ui/icons/Error';
+import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline';
+import DeleteIcon from '@material-ui/icons/Delete';
+import AddIcon from '@material-ui/icons/Add';
+import { 
+  InputBase,
+  Checkbox,
+  IconButton
+} from '@material-ui/core';
 
 const AddTodoForm = ({ setToggleAddForm, addNewTodo }) => {
   const { register, handleSubmit } = useForm({
@@ -20,23 +29,50 @@ const AddTodoForm = ({ setToggleAddForm, addNewTodo }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <h1>Add a new todo</h1>
-      <input
+      <InputBase
         type='text'
         name='date_time'
         ref={register}
-        defaultValue={'Today'} // { currentTodo.time }
+        defaultValue={new Date()}
       />
 
-      <input type='text' name='title' ref={register} placeholder='Title' />
-      <input type='checkbox' name='important' ref={register} value={false} />
-      <input type='checkbox' name='completed' ref={register} value={false} />
-      <label htmlFor='important'>Important</label>
-      <textarea name='description' ref={register} defaultValue='description' />
-      <button>Add</button> {/* NEEDS FUNCTIONALITY */}
-      <button type='button' onClick={() => setToggleAddForm(false)}>
-        Cancel
-      </button>
+      <InputBase
+        type='text'
+        name='title' 
+        ref={register} 
+        placeholder='Title'
+      />
+
+      <InputBase
+        multiline={true}
+        defaultValue=''
+        name='description'
+        ref={register}
+        inputProps={{ 'aria-label': 'Description' }}
+        placeholder='Description'
+      />
+
+      <Checkbox 
+        icon={<ErrorOutlineIcon />}
+        checkedIcon={<ErrorIcon />}
+        name="important" 
+        ref={register}
+        value={false}
+      />
+
+      <IconButton aria-label="delete">
+        <DeleteIcon onClick={() => setToggleAddForm(false)}/>
+      </IconButton>
+      
+      <IconButton type="submit" aria-label="delete">
+        <AddIcon />
+      </IconButton>
+
+
+      <input type='checkbox' name='completed' ref={register} value={false} style={{display: 'none'}} />
+      {/* <input type='checkbox' name='important' ref={register} value={false} /> /*}
+      <label htmlFor='important'>Important</label>*/}
+       {/* NEEDS FUNCTIONALITY  */}
     </form>
   );
 };
