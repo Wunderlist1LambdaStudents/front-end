@@ -34,7 +34,7 @@ const TodoCard = ({ todo, setToggleEditForm, toggleEditForm, editTodo }) => {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   return (
-    <div>
+    <div  style={{border:'solid red'}}>
       <div className='todo-card'>
         <h3>{todo.name}</h3>
         <p>{todo.completed}</p>

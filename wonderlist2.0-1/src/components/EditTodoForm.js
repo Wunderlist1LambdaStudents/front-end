@@ -10,7 +10,6 @@ const EditTodoForm = ({ id, setToggleEditForm, todo, currentTodo }) => {
   // const [todo, setTodo] = useState({
   //   id,
   // });
-
   console.log(currentTodo);
 
   const { register, handleSubmit } = useForm({
@@ -31,21 +30,35 @@ const EditTodoForm = ({ id, setToggleEditForm, todo, currentTodo }) => {
       <h1>Edit todo</h1>
       <input
         type='text'
+        name='time'
+        ref={register}
+        defaultValue={"Today"} // { currentTodo.time }
+      />
+      <input
+        type='text'
         name='todo'
         ref={register}
         defaultValue={currentTodo.name}
       />
-      <select name='important' ref={register}>
-        <option>Important</option>
-        <option>Not Important</option>
-      </select>
+      <input 
+        type="checkbox" 
+        name="important" 
+        value="important" /* {currentTodo.important} */ 
+      /> 
+      <label 
+        htmlFor="important"> 
+        Important 
+      </label>
       <textarea
         name='description'
         ref={register}
         defaultValue={currentTodo.summary}
       />
-      <button>Edit Todo</button>
-      <button type='button' onClick={() => setToggleEditForm(false)}>
+      <button>Save</button> {/* NEEDS FUNCTIONALITY */}
+      <button>Edit</button> {/* NEEDS FUNCTIONALITY */}
+      <button 
+        type='button' 
+        onClick={() => setToggleEditForm(false)}>
         Cancel
       </button>
     </form>

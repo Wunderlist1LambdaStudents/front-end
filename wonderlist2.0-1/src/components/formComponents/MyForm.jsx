@@ -4,45 +4,28 @@ import { connect } from 'react-redux';
 import MyInput from './MyInput';
 import { Button, Container } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
+import {signupSubmitHandler, loginSubmitHandler,} from '../../store/actions/userActions';
 
-import {
-  signupSubmitHandler,
-  loginSubmitHandler,
-} from '../../store/actions/userActions';
-
-//////////////////////////////////////
-//////////////////////////////////////
-// Trying to build this to make it as
-// reusuble as possible. You pass an
-// imported object to it as props
-// (from formComponentsData.js) and
-// it spits out a complete form with
-// validation, buttons, error messages
-// the whole shabang.
-//////////////////////////////////////
-//////////////////////////////////////
 
 function MyForm(props) {
   // Michael- useForm state management
   const { register, handleSubmit, errors, watch } = useForm({ mode: 'onBlur' });
   // const onSubmit = data => Object.values(data).map(key => console.dir(key))
   const onSubmit = data => {
-    console.log(data);
-    // props.signupSubmitHandler(data);
-    props.loginSubmitHandler(data);
-    // if (Object.values(data).length > 2) {
-    // } else {
-    // }
-  };
+
+    Object.values(data).length > 2
+    ? props.signupSubmitHandler(data)
+    : props.loginSubmitHandler(data) 
+  }
 
   //useHistory into constant to pass into props.data
-  const history = useHistory();
+  const history = useHistory()
   // Michael- making a refrence for password matching later
-  const passwordRef = useRef({});
-  passwordRef.current = watch('password', '');
+  const passwordRef = useRef({})
+  passwordRef.current = watch('password', '')
   // Michael- packaging all this data for the makeForm() function
-  const formData = props.data(history, passwordRef);
-  const formPackage = { errors, register, formData };
+  const formData = props.data(history, passwordRef)
+  const formPackage = { errors, register, formData }
 
   function makeForm(obj) {
     return (
