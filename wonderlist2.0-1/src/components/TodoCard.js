@@ -36,11 +36,11 @@ const TodoCard = ({ todo, setToggleEditForm, toggleEditForm, editTodo }) => {
   return (
     <div  style={{border:'solid red'}}>
       <div className='todo-card'>
-        <h3>{todo.name}</h3>
+        <h3>{todo.title}</h3>
         <p>{todo.completed}</p>
-        <p>{todo.important}</p>
-        <p>{todo.summary}</p>
-        <p>{todo.time}</p>
+        {todo.important && <p>IMPORTANT!</p>}
+        <p>{todo.description}</p>
+        <p>{todo.date_date_time}</p>
         <button
           onClick={() => {
             setToggleEditForm(true);
@@ -53,7 +53,7 @@ const TodoCard = ({ todo, setToggleEditForm, toggleEditForm, editTodo }) => {
       </div>
       {/* <Modal open={toggleEditForm} onClose={() => setToggleEditForm(false)}>
         <div style={modalStyle} className={classes.paper}>
-          <EditTodoForm
+          <EditTodoForm`
             setToggleEditForm={setToggleEditForm}
             todo={todo}
             id={todo.id}
