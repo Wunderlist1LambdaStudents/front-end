@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch, connect } from 'react-redux';
+import NavBar from './NavBar';
 import TodoCard from './TodoCard';
 import EditTodoForm from './EditTodoForm';
 import AddTodoForm from './AddTodoForm';
@@ -59,14 +60,7 @@ const TodosList = ({ todos, fetchTodos }) => {
 
   return (
     <div>
-      <button
-        className='add-todo-button'
-        onClick={() => {
-          setToggleAddForm(true);
-        }}
-      >
-        Add A Todo
-      </button>
+      <NavBar setToggleAddForm={setToggleEditForm} />
       <h1>Render the list of todos</h1>
       {todos.map(todo => {
         return (

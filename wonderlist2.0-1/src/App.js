@@ -7,6 +7,7 @@ import { Route, Switch } from 'react-router-dom';
 import { CssBaseline } from '@material-ui/core';
 import Profile from './components/Profile';
 import PrivateRoutes from './components/PrivateRoutes';
+import NavBar from './components/NavBar';
 
 function App() {
   return (
