@@ -13,7 +13,7 @@ export const fetchTodos = () => {
   return dispatch => {
     dispatch({ type: FETCH_TODOS_START });
 
-    //fetch the users todo list might need the user id or just use token
+    //michael - fetch the users todo list might need the user id or just use token
     axiosWithAuth()
       .get('')
       .then(res => {
