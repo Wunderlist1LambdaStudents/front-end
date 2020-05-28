@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import EditTodoForm from './EditTodoForm';
+import { deleteTodo, fetchTodos } from '../store/actions/todosAction';
+import { useHistory } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
@@ -30,11 +33,18 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const TodoCard = ({ todo, setToggleEditForm, toggleEditForm, editTodo }) => {
-  const classes = useStyles();
-  const [modalStyle] = useState(getModalStyle);
+const TodoCard = ({
+  todo,
+  setToggleEditForm,
+  toggleEditForm,
+  editCurrentTodo,
+  deleteTodo,
+  fetchTodos,
+}) => {
+  const { push } = useHistory();
+
   return (
-    <div  style={{border:'solid red'}}>
+    <div style={{ border: 'solid red' }}>
       <div className='todo-card'>
         <h3>{todo.title}</h3>
         <p>{todo.completed}</p>
@@ -44,24 +54,26 @@ const TodoCard = ({ todo, setToggleEditForm, toggleEditForm, editTodo }) => {
         <button
           onClick={() => {
             setToggleEditForm(true);
-            editTodo(todo);
+            editCurrentTodo(todo);
           }}
         >
           Edit
         </button>
-        <button>Delete</button>
+        <button
+          onClick={() => {
+            deleteTodo(todo.id);
+            push('/profile');
+          }}
+        >
+          Delete
+        </button>
       </div>
-      {/* <Modal open={toggleEditForm} onClose={() => setToggleEditForm(false)}>
-        <div style={modalStyle} className={classes.paper}>
-          <EditTodoForm`
-            setToggleEditForm={setToggleEditForm}
-            todo={todo}
-            id={todo.id}
-          />
-        </div>
-      </Modal> */}
     </div>
   );
 };
 
-export default TodoCard;
+const mapStateToProps = state => {
+  return state;
+};
+
+export default connect(null, { deleteTodo, fetchTodos })(TodoCard);
