@@ -30,20 +30,20 @@ const EditTodoForm = ({ id, setToggleEditForm, todo, currentTodo }) => {
       <h1>Edit todo</h1>
       <input
         type='text'
-        name='time'
+        name='date_time'
         ref={register}
-        defaultValue={"Today"} // { currentTodo.time }
+        defaultValue={currentTodo.date_time}
       />
       <input
         type='text'
-        name='todo'
+        name='title'
         ref={register}
-        defaultValue={currentTodo.name}
+        defaultValue={currentTodo.title}
       />
       <input 
         type="checkbox" 
         name="important" 
-        value="important" /* {currentTodo.important} */ 
+        defaulValue={currentTodo.important}
       /> 
       <label 
         htmlFor="important"> 
@@ -52,7 +52,7 @@ const EditTodoForm = ({ id, setToggleEditForm, todo, currentTodo }) => {
       <textarea
         name='description'
         ref={register}
-        defaultValue={currentTodo.summary}
+        defaultValue={currentTodo.description}
       />
       <button>Save</button> {/* NEEDS FUNCTIONALITY */}
       <button>Edit</button> {/* NEEDS FUNCTIONALITY */}

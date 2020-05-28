@@ -19,16 +19,15 @@ const AddTodoForm = ({ setToggleAddForm, addNewTodo }) => {
       <h1>Add a new todo</h1>
       <input
         type='text'
-        name='time'
+        name='date_time'
         ref={register}
         defaultValue={'Today'} // { currentTodo.time }
       />
       <input type='text' name='todo' ref={register} placeholder='Title' />
-      <input
-        type='checkbox'
-        name='important'
-        value='important' /* {currentTodo.important} */
-      />
+      <input type='text' name='title' ref={register} placeholder='Title' />
+      <input type='checkbox' name='important' />
+      <label htmlFor='important'>Important</label>
+      <textarea name='description' ref={register} defaultValue='description' />
       <label htmlFor='important'>Important</label>
       <textarea name='description' ref={register} defaultValue='description' />
       <button>Add</button> {/* NEEDS FUNCTIONALITY */}
