@@ -41,7 +41,7 @@ const TodosList = ({ todos, fetchTodos }) => {
   console.log('user id', userId);
   //Micheal
   useEffect(() => {
-    // fetchTodos();
+    fetchTodos();
   }, []);
 
   const classes = useStyles();

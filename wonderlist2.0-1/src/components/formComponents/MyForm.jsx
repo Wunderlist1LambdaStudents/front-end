@@ -25,7 +25,6 @@ import {
 //////////////////////////////////////
 //////////////////////////////////////
 
-
 function MyForm(props) {
   // Michael- useForm state management
   const history = useHistory();
@@ -35,7 +34,6 @@ function MyForm(props) {
   // const { push } = useHistory();
   // const onSubmit = data => Object.values(data).map(key => console.dir(key))
   const onSubmit = data => {
-
     console.log(data);
     // props.signupSubmitHandler(data);
     // props.loginSubmitHandler(data, history);
@@ -43,6 +41,10 @@ function MyForm(props) {
     // if (Object.values(data).length > 2) {
     // } else {
     // }
+    // Object.values(data).length > 2
+    //   ? props.signupSubmitHandler(data)
+    //   : props.loginSubmitHandler(data);
+
     axiosWithAuth()
       .post('/api/auth/login', data)
       .then(res => {
@@ -54,22 +56,12 @@ function MyForm(props) {
       .catch(err => console.log('your user is not logged in', err));
   };
 
-  //useHistory into constant to pass into props.data
-
-
-    Object.values(data).length > 2
-    ? props.signupSubmitHandler(data)
-    : props.loginSubmitHandler(data) 
-  }
-
-
-
   // Michael- making a refrence for password matching later
-  const passwordRef = useRef({})
-  passwordRef.current = watch('password', '')
+  const passwordRef = useRef({});
+  passwordRef.current = watch('password', '');
   // Michael- packaging all this data for the makeForm() function
-  const formData = props.data(history, passwordRef)
-  const formPackage = { errors, register, formData }
+  const formData = props.data(history, passwordRef);
+  const formPackage = { errors, register, formData };
 
   function makeForm(obj) {
     return (

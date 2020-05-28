@@ -15,40 +15,24 @@ const AddTodoForm = ({ setToggleAddForm, addNewTodo }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-
       <h1>Add a new todo</h1>
       <input
         type='text'
         name='date_time'
         ref={register}
-        defaultValue={"Today"} // { currentTodo.time }
+        defaultValue={'Today'} // { currentTodo.time }
       />
-      <input
-        type='text'
-        name='title'
-        ref={register}
-        placeholder= "Title"
-      />
-      <input 
-        type="checkbox" 
-        name="important" 
-      />
-      <label 
-        htmlFor="important"> 
-        Important 
-      </label> 
-      <textarea
-        name='description'
-        ref={register}
-        defaultValue="description"
-      />
+      <input type='text' name='todo' ref={register} placeholder='Title' />
+      <input type='text' name='title' ref={register} placeholder='Title' />
+      <input type='checkbox' name='important' />
+      <label htmlFor='important'>Important</label>
+      <textarea name='description' ref={register} defaultValue='description' />
+      <label htmlFor='important'>Important</label>
+      <textarea name='description' ref={register} defaultValue='description' />
       <button>Add</button> {/* NEEDS FUNCTIONALITY */}
-      <button 
-        type='button' 
-        onClick={() => setToggleAddForm(false)}>
+      <button type='button' onClick={() => setToggleAddForm(false)}>
         Cancel
       </button>
-
     </form>
   );
 };
