@@ -19,7 +19,7 @@ import {useHistory} from 'react-router-dom'
 export default function MyForm(props){
     // Michael- useForm state management
     const { register, handleSubmit, errors, watch } = useForm({mode:'onBlur'})
-    const onSubmit = data => Object.values(data).map(key => console.dir(key))
+    const onSubmit = data => console.log(Object.values(data).length)
     //useHistory into constant to pass into props.data
     const history = useHistory()
     // Michael- making a refrence for password matching later
