@@ -1,11 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
 
-const AddTodoForm = ({ setToggleAddForm }) => {
+import { addNewTodo } from '../store/actions/todosAction';
+
+const AddTodoForm = ({ setToggleAddForm, addNewTodo }) => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = data => {
     console.log(data);
+
+    //the data that is being passed in might changed due to being new to react-hook-form
+    addNewTodo(data);
   };
 
   return (
@@ -25,4 +31,8 @@ const AddTodoForm = ({ setToggleAddForm }) => {
   );
 };
 
-export default AddTodoForm;
+const mapStateToProps = state => {
+  return state;
+};
+
+export default connect(mapStateToProps, { addNewTodo })(AddTodoForm);
