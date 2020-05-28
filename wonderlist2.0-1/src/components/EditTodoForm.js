@@ -5,13 +5,13 @@ import { connect } from 'react-redux';
 
 import { editTodos } from '../store/actions/todosAction';
 
-const EditTodoForm = ({ id, setToggleEditForm, todo }) => {
+const EditTodoForm = ({ id, setToggleEditForm, todo, currentTodo }) => {
   // const id = useParams();
   // const [todo, setTodo] = useState({
   //   id,
   // });
 
-  console.log(todo);
+  console.log(currentTodo);
 
   const { register, handleSubmit } = useForm({
     defaultValues: {
@@ -29,12 +29,21 @@ const EditTodoForm = ({ id, setToggleEditForm, todo }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <h1>Edit todo</h1>
-      <input type='text' name='todo' ref={register} defaultValue={todo.name} />
+      <input
+        type='text'
+        name='todo'
+        ref={register}
+        defaultValue={currentTodo.name}
+      />
       <select name='important' ref={register}>
         <option>Important</option>
         <option>Not Important</option>
       </select>
-      <textarea name='description' ref={register} defaultValue={todo.summary} />
+      <textarea
+        name='description'
+        ref={register}
+        defaultValue={currentTodo.summary}
+      />
       <button>Edit Todo</button>
       <button type='button' onClick={() => setToggleEditForm(false)}>
         Cancel
