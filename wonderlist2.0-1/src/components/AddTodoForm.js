@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
-
 import { addNewTodo } from '../store/actions/todosAction';
 
 const AddTodoForm = ({ setToggleAddForm, addNewTodo }) => {
