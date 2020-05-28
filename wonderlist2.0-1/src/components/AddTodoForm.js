@@ -4,7 +4,12 @@ import { useForm } from 'react-hook-form';
 import { addNewTodo } from '../store/actions/todosAction';
 
 const AddTodoForm = ({ setToggleAddForm, addNewTodo }) => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      important: false,
+      completed: false,
+    },
+  });
 
   const onSubmit = data => {
     console.log(data);
@@ -22,11 +27,9 @@ const AddTodoForm = ({ setToggleAddForm, addNewTodo }) => {
         ref={register}
         defaultValue={'Today'} // { currentTodo.time }
       />
-      <input type='text' name='todo' ref={register} placeholder='Title' />
       <input type='text' name='title' ref={register} placeholder='Title' />
-      <input type='checkbox' name='important' />
-      <label htmlFor='important'>Important</label>
-      <textarea name='description' ref={register} defaultValue='description' />
+      <input type='checkbox' name='important' ref={register} value={false} />
+      <input type='checkbox' name='completed' ref={register} value={false} />
       <label htmlFor='important'>Important</label>
       <textarea name='description' ref={register} defaultValue='description' />
       <button>Add</button> {/* NEEDS FUNCTIONALITY */}

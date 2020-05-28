@@ -39,6 +39,7 @@ const TodosList = ({ todos, fetchTodos }) => {
   const userId = localStorage.getItem('userId');
   // const todos = useSelector(state => state.todosReducer.todos);
   console.log('user id', userId);
+  console.log('My todo list', todos);
   //Micheal
   useEffect(() => {
     fetchTodos();
@@ -52,7 +53,7 @@ const TodosList = ({ todos, fetchTodos }) => {
   const [toggleEditForm, setToggleEditForm] = useState(false);
   const [currentTodo, setCurrentTodo] = useState({});
 
-  const editTodo = todo => {
+  const editCurrentTodo = todo => {
     setCurrentTodo(todo);
   };
 
@@ -69,15 +70,13 @@ const TodosList = ({ todos, fetchTodos }) => {
       <h1>Render the list of todos</h1>
       {todos.map(todo => {
         return (
-          <>
-            <TodoCard
-              key={todo.id}
-              todo={todo}
-              setToggleEditForm={setToggleEditForm}
-              toggleEditForm={toggleEditForm}
-              editTodo={editTodo}
-            />
-          </>
+          <TodoCard
+            key={todo.id}
+            todo={todo}
+            setToggleEditForm={setToggleEditForm}
+            toggleEditForm={toggleEditForm}
+            editCurrentTodo={editCurrentTodo}
+          />
         );
       })}
       <Modal open={toggleAddForm} onClose={() => setToggleAddForm(false)}>

@@ -15,7 +15,7 @@ export const fetchTodos = () => {
 
     //michael - fetch the users todo list might need the user id or just use token
     axiosWithAuth()
-      .get(`/api/users/:${userId}/todos`)
+      .get(`/api/users/${userId}/todos`)
       .then(res => {
         console.log('Grabbed the todos', res);
 
@@ -32,7 +32,7 @@ export const addNewTodo = todo => {
     dispatch({ type: ADD_TODO });
 
     axiosWithAuth()
-      .post('', todo)
+      .post(`/api/users/${userId}/todos`, todo)
       .then(res => {
         console.log('added new todo', res);
 
@@ -45,11 +45,12 @@ export const addNewTodo = todo => {
 
 // edit the todo the user clicked ons
 export const editTodos = (id, todo) => {
+  console.log('edit submit has been clicked');
   return dispatch => {
     dispatch({ type: EDIT_TODO });
 
     axiosWithAuth()
-      .put(``, todo)
+      .put(`/api/todos/${id}`, todo)
       .then(res => {
         console.log('edit the todo', res);
 
@@ -66,12 +67,11 @@ export const deleteTodo = id => {
     dispatch({ type: DELETE_TODO });
 
     axiosWithAuth()
-      .delete(``)
+      .delete(`/api/todos/${id}`)
       .then(res => {
         console.log('deleted the todo', res);
 
         //call the fetchtodos to rerender the list instead of manually refreshing
-        // fetchTodos();
       })
       .catch(err => console.log('did not delete the todo', err));
   };

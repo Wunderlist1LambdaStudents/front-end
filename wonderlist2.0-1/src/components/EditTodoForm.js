@@ -1,28 +1,18 @@
 import React, { useState } from 'react';
-// import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux';
 
 import { editTodos } from '../store/actions/todosAction';
 
-const EditTodoForm = ({ id, setToggleEditForm, todo, currentTodo }) => {
-  // const id = useParams();
-  // const [todo, setTodo] = useState({
-  //   id,
-  // });
-  console.log(currentTodo);
+const EditTodoForm = ({ setToggleEditForm, currentTodo, editTodos }) => {
+  console.log(currentTodo.id);
 
-  const { register, handleSubmit } = useForm({
-    defaultValues: {
-      // todo: todo.name,
-    },
-  });
+  const { register, handleSubmit } = useForm();
 
   const onSubmit = data => {
     console.log(data);
-
     //might change as well
-    editTodos(id, data);
+    editTodos(currentTodo.id, data);
   };
 
   return (
@@ -40,25 +30,19 @@ const EditTodoForm = ({ id, setToggleEditForm, todo, currentTodo }) => {
         ref={register}
         defaultValue={currentTodo.title}
       />
-      <input 
-        type="checkbox" 
-        name="important" 
+      <input
+        type='checkbox'
+        name='important'
         defaulValue={currentTodo.important}
-      /> 
-      <label 
-        htmlFor="important"> 
-        Important 
-      </label>
+      />
+      <label htmlFor='important'>Important</label>
       <textarea
         name='description'
         ref={register}
         defaultValue={currentTodo.description}
       />
       <button>Save</button> {/* NEEDS FUNCTIONALITY */}
-      <button>Edit</button> {/* NEEDS FUNCTIONALITY */}
-      <button 
-        type='button' 
-        onClick={() => setToggleEditForm(false)}>
+      <button type='button' onClick={() => setToggleEditForm(false)}>
         Cancel
       </button>
     </form>
