@@ -13,9 +13,9 @@ export const fetchTodos = () => {
 
     //michael - fetch the users todo list might need the user id or just use token
     axiosWithAuth()
-      .get('')
+      .get('/api/users')
       .then(res => {
-        console.log(res.data);
+        console.log(res);
 
         //payload might change after the backend calls
         dispatch({ type: FETCH_TODOS_SUCCESS, payload: res.data });

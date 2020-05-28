@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import EditTodoForm from './EditTodoForm';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -31,11 +30,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const TodoCard = ({ todo, setToggleEditForm }) => {
+const TodoCard = ({ todo, setToggleEditForm, toggleEditForm, editTodo }) => {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
   return (
-    <div>
+    <div  style={{border:'solid red'}}>
       <div className='todo-card'>
         <h3>{todo.name}</h3>
         <p>{todo.completed}</p>
@@ -45,12 +44,22 @@ const TodoCard = ({ todo, setToggleEditForm }) => {
         <button
           onClick={() => {
             setToggleEditForm(true);
+            editTodo(todo);
           }}
         >
           Edit
         </button>
         <button>Delete</button>
       </div>
+      {/* <Modal open={toggleEditForm} onClose={() => setToggleEditForm(false)}>
+        <div style={modalStyle} className={classes.paper}>
+          <EditTodoForm
+            setToggleEditForm={setToggleEditForm}
+            todo={todo}
+            id={todo.id}
+          />
+        </div>
+      </Modal> */}
     </div>
   );
 };
