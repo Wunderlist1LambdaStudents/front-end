@@ -7,7 +7,7 @@ import { Route, Switch } from 'react-router-dom';
 import { CssBaseline, createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 import Profile from './components/Profile';
 import PrivateRoutes from './components/PrivateRoutes';
-import NavBar from './components/NavBar';
+import Hotfix from './components/zHotfix'
 
 const theme = createMuiTheme({
   palette:{
@@ -47,7 +47,7 @@ function App() {
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/signup' component={Signup} />
-          <Route path='/login' component={Login} />
+          <Route path='/login' component={Hotfix} />
           <PrivateRoutes path='/profile' component={Profile} />
         </Switch>
       </MuiThemeProvider>
