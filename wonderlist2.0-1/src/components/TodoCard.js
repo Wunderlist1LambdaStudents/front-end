@@ -56,7 +56,8 @@ const useStyles = makeStyles(theme => ({
     fontSize: 48,
     right: -1,
     top: -52,
-    float:'right'
+    float:'right',
+    //border: 'solid red 1px'
   },
   headLine: {
     fontSize: 10,
@@ -96,6 +97,9 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
+let statusIcon = (completed, important)=> {if(completed){return <Checked/>
+}else if(important){ return <Error/>}else{return <Circle/>}
+}
 
 
 const TodoCard = ({
@@ -125,7 +129,9 @@ const TodoCard = ({
         <p className={classes.headLine}>{todo.date_time = todo.date_time.replace('T','\xa0\xa0\xa0')}</p>
         <h2 className={classes.title}>{todo.title}</h2>
         <p style={{display:'none'}}>{todo.completed}</p>
-        {todo.important !== 0 && <SvgIcon color='primary.contrastText' className={classes.cardIcon} component={Circle} ></SvgIcon >}
+        <SvgIcon color='primary.contrastText' className={classes.cardIcon}>
+          {statusIcon(todo.completed, todo.important)}
+        </SvgIcon >
 
         {
           todo.description.includes('#!%**&69')

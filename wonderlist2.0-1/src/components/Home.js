@@ -16,7 +16,7 @@ const Home = () => {
         </div>
         <Button
           variant='outlined'
-          color='Primary'
+          color='primary'
           onClick={() => push('/login')}
         >
           {' '}
