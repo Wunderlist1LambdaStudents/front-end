@@ -60,7 +60,7 @@ const TodosList = ({ todos, fetchTodos }) => {
 
   return (
     <div>
-      <NavBar setToggleAddForm={setToggleEditForm} />
+      <NavBar setToggleAddForm={setToggleAddForm} />
       <h1>Render the list of todos</h1>
       {todos.map(todo => {
         return (
