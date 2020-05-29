@@ -31,6 +31,7 @@ const Home = () => {
           Signup
         </Button>
       </div>
+      <a href='https://sharp-bartik-c317ee.netlify.app/'> Home Page </a>
     </div>
   );
 };
