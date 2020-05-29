@@ -4,18 +4,48 @@ import { connect } from 'react-redux';
 
 import { editTodos } from '../store/actions/todosAction';
 
+
 const EditTodoForm = ({ setToggleEditForm, currentTodo, editTodos }) => {
   console.log(currentTodo.id);
+  /*
+  todo.description.includes('#!%**&69')
+  ? <p>{todo.description.substring(0, todo.description.length-8) + 'repeating'}</p>
+  : <p>{todo.description}</p>
+  */
+ 
 
   const { register, handleSubmit } = useForm();
 
   const onSubmit = data => {
-    console.log(data);
-    //might change as well
+
+    if(!isRepeating){data.description = secretFunction(data.description, true)}
+
     editTodos(currentTodo.id, data);
   };
+  
+
+  //////////////////////////////////////////////////////////
+  /////////////////// HOT FIX CODE /////////////////////////
+  /////////////////////////////////////////////////////////
+
+  let isRepeating = false;
+  
+  function secretFunction(descript , truthy){
+    if (truthy) return (descript+'#!%**&69')
+    if (descript.includes('#!%**&69')){
+      currentTodo.description.slice(0, descript.length-8)
+      return descript.slice(0, descript.length-8)
+      
+    }else{console.log('nope'); return descript}
+  }
+  //////////////////////////////////////////////////////////
+  /////////////////// HOT FIX CODE /////////////////////////
+  /////////////////////////////////////////////////////////
+  
 
   return (
+    
+
     <form onSubmit={handleSubmit(onSubmit)}>
       <h1>Edit todo</h1>
       <input
@@ -39,7 +69,7 @@ const EditTodoForm = ({ setToggleEditForm, currentTodo, editTodos }) => {
       <textarea
         name='description'
         ref={register}
-        defaultValue={currentTodo.description}
+        defaultValue={secretFunction(currentTodo.description)}
       />
       <button>Save</button> {/* NEEDS FUNCTIONALITY */}
       <button type='button' onClick={() => setToggleEditForm(false)}>

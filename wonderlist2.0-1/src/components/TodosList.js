@@ -10,13 +10,14 @@ import { fetchTodos } from '../store/actions/todosAction';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 
+
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
 
 function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
+  const top = 50;
+  const left = 50;
 
   return {
     top: `${top}%`,
@@ -30,7 +31,6 @@ const useStyles = makeStyles(theme => ({
     position: 'absolute',
     width: 400,
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
   },
@@ -61,7 +61,7 @@ const TodosList = ({ todos, fetchTodos }) => {
   return (
     <div>
       <NavBar setToggleAddForm={setToggleAddForm} />
-      <h1>Render the list of todos</h1>
+
       {todos.map(todo => {
         return (
           <TodoCard
