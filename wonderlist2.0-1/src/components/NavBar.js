@@ -8,9 +8,11 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import HomeIcon from '@material-ui/icons/Home';
 import AddIcon from '@material-ui/icons/Add';
 
+
 const useStyles = makeStyles({
   root: {
     width: 500,
+    backgroundColor:'rgba(0, 0, 0, 0)'
   },
 });
 
@@ -34,7 +36,7 @@ function NavBar({ setToggleAddForm }) {
             label='Home'
             icon={
               <a href=''>
-                <HomeIcon />
+                <HomeIcon color='primary'/>
               </a>
             }
           />
