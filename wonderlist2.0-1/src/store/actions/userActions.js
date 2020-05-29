@@ -16,18 +16,3 @@ export const signupSubmitHandler = data => {
       .catch(err => console.log('could not create new user', err));
   };
 };
-
-// export const loginSubmitHandler = (loginData, history) => {
-//   return dispatch => {
-//     dispatch({ type: LOGIN_SUBMIT_START });
-//     axiosWithAuth()
-//       .post('/api/auth/login', loginData)
-//       .then(res => {
-//         console.log('your user is logged in', res.data.id);
-//         dispatch({ type: LOGIN_SUBMIT_SUCCESS, payload: res.data.id });
-//         localStorage.setItem('token', res.data.token);
-//         history.push('/profile');
-//       })
-//       .catch(err => console.log('your user is not logged in', err));
-//   };
-// };
