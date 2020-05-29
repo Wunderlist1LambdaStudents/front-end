@@ -32,14 +32,14 @@ const AddTodoForm = ({ setToggleAddForm, addNewTodo }) => {
       <InputBase
         type='text'
         name='date_time'
-        ref={register}
+        inputRef={register}
         defaultValue={new Date()}
       />
 
       <InputBase
         type='text'
         name='title' 
-        ref={register} 
+        inputRef={register} 
         placeholder='Title'
       />
 
@@ -47,7 +47,7 @@ const AddTodoForm = ({ setToggleAddForm, addNewTodo }) => {
         multiline={true}
         defaultValue=''
         name='description'
-        ref={register}
+        inputRef={register}
         inputProps={{ 'aria-label': 'Description' }}
         placeholder='Description'
       />
@@ -56,15 +56,16 @@ const AddTodoForm = ({ setToggleAddForm, addNewTodo }) => {
         icon={<ErrorOutlineIcon />}
         checkedIcon={<ErrorIcon />}
         name="important" 
-        ref={register}
+        inputRef={register}
         value={false}
       />
 
-      <IconButton aria-label="delete">
+      <IconButton type="submit" aria-label="delete">
         <DeleteIcon onClick={() => setToggleAddForm(false)}/>
       </IconButton>
       
-      <IconButton type="submit" aria-label="delete">
+  
+      <IconButton aria-label="delete">
         <AddIcon />
       </IconButton>
 
@@ -72,7 +73,7 @@ const AddTodoForm = ({ setToggleAddForm, addNewTodo }) => {
       <input type='checkbox' name='completed' ref={register} value={false} style={{display: 'none'}} />
       {/* <input type='checkbox' name='important' ref={register} value={false} /> /*}
       <label htmlFor='important'>Important</label>*/}
-       {/* NEEDS FUNCTIONALITY  */}
+      {/* NEEDS FUNCTIONALITY  */}
     </form>
   );
 };

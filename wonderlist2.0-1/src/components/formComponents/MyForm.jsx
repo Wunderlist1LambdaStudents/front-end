@@ -44,7 +44,7 @@ function MyForm(props) {
     // Object.values(data).length > 2
     //   ? props.signupSubmitHandler(data)
     //   : props.loginSubmitHandler(data);
-
+    if (document.getElementById('loginButton')){
     axiosWithAuth()
       .post('/api/auth/login', data)
       .then(res => {
@@ -54,6 +54,12 @@ function MyForm(props) {
         history.push('/profile');
       })
       .catch(err => console.log('your user is not logged in', err));
+
+    } else{props.signupSubmitHandler(data)
+      history.push('/')
+    } 
+
+
   };
 
   // Michael- making a refrence for password matching later

@@ -128,6 +128,7 @@ export const loginFormData = historyRef => ({
         type: 'submit',
         variant: 'outlined',
         color: 'primary',
+        id: 'loginButton'
         // onClick: () => historyRef.push('/profile'),
       },
     },
