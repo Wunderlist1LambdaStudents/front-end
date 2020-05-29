@@ -9,7 +9,7 @@ const Home = () => {
   const { push } = useHistory();
 
   return (
-    <>{/*
+    <>
       <Button 
         variant='outlined' 
         color='Primary' 
@@ -23,7 +23,7 @@ const Home = () => {
         onClick={() => push('/signup')}
       > Signup
       </Button>
-    */}
+
       <Profile>
 
       </Profile>
