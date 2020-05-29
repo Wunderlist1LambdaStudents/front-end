@@ -11,7 +11,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 const useStyles = makeStyles({
   root: {
-    width: '50vw',
+    width: '100vw',
     backgroundColor:'rgba(0, 0, 0, 0)'
   },
 });
@@ -23,7 +23,7 @@ function NavBar({ setToggleAddForm }) {
 
   return (
     <div className='sticky-footer'>
-      <div className='right'>
+      <div className='center'>
         <BottomNavigation
           value={value}
           onChange={(event, newValue) => {
