@@ -14,3 +14,32 @@
   display: flex;
   justify-content: center;
 }
+
+.home-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.home-wrapper button {
+  margin: 30px;
+}
+
+.home-wrapper {
+  margin: 30px;
+}
+
+.main-button {
+  margin: auto;
+  width: 50%;
+}
+
+.main-button button {
+  margin: 30px;
+}
+
+.check-logo svg {
+  font-size: 200px !important;
+}
