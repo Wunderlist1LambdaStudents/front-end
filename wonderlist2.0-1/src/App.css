@@ -43,3 +43,16 @@
 .check-logo svg {
   font-size: 200px !important;
 }
+
+.form-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.form-flex button {
+  margin: 30px;
+}
