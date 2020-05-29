@@ -79,7 +79,7 @@ export const signUpFormData = (historyRef, passwordRef) => ({
         type: 'submit',
         variant: 'outlined',
         color: 'primary',
-        onClick: () => historyRef.push('/')
+        // onClick: () => historyRef.push('/')
       },
     },
 
@@ -128,7 +128,7 @@ export const loginFormData = historyRef => ({
         type: 'submit',
         variant: 'outlined',
         color: 'primary',
-        onClick: () => historyRef.push('/profile')
+        // onClick: () => historyRef.push('/profile'),
       },
     },
 

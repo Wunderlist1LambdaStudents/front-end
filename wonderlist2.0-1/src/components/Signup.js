@@ -5,7 +5,9 @@ import { signUpFormData, formStyle } from './formComponents/formComponentsData';
 const Signup = () => {
   return (
     //Michael - Temporary Styling
-    <MyForm data={signUpFormData} style={formStyle} />
+    <div className='home-wrapper'>
+      <MyForm data={signUpFormData} style={formStyle} />
+    </div>
   );
 };
 
