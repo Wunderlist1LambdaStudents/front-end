@@ -47,7 +47,7 @@ export const editTodos = (id, todo) => {
   console.log('edit submit has been clicked');
   return dispatch => {
     dispatch({ type: EDIT_TODO });
-
+    console.log(todo.description)
     axiosWithAuth()
       .put(`/api/todos/${id}`, todo)
       .then(res => {
