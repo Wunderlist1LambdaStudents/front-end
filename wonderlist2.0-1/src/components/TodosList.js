@@ -10,6 +10,9 @@ import { fetchTodos } from '../store/actions/todosAction';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import Loader from 'react-loader-spinner';
+import Search from './Search';
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -36,8 +39,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const TodosList = ({ todos, fetchTodos }) => {
+const TodosList = ({ todos, fetchTodos, isLoading }) => {
   const userId = localStorage.getItem('userId');
+  const [searchTerm, setSearchTerm] = useState('');
   // const todos = useSelector(state => state.todosReducer.todos);
   console.log('user id', userId);
   console.log('My todo list', todos);
@@ -58,11 +62,24 @@ const TodosList = ({ todos, fetchTodos }) => {
     setCurrentTodo(todo);
   };
 
+  const searchChangeHandler = evt => {
+    setSearchTerm(evt.target.value);
+  };
+
+  if (isLoading) {
+    return <Loader type='TailSpin' color='#1e88e5ff' height={80} width={80} />;
+  }
+
+  const filterTodos = todos.filter(todo => {
+    return todo.title.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
   return (
     <div>
+      <Search searchChangeHandler={searchChangeHandler} />
       <NavBar setToggleAddForm={setToggleAddForm} />
 
-      {todos.map(todo => {
+      {filterTodos.map(todo => {
         return (
           <TodoCard
             key={todo.id}
